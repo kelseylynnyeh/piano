@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>Playable Piano</title>
+    <head>
+        <link rel="stylesheet" href="piano.css">
+    </head>
+
+<body>
+<div class="piano">
+<ul class="set">
+<!-- first octave -->
+    <li data-key="81" class="key" id="white">
+        <kbd>Q</kbd>
+    </li> <!--C-->
+    <li data-key="50" class="key" id="black">
+        <kbd>2</kbd>
+    </li> <!--C# -->
+    <li data-key="87" class="key" id="white">
+        <kbd>W</kbd>
+    </li> <!--D -->
+    <li data-key="51" class="key" id="black">
+       <kbd>3</kbd>
+    </li> <!--D# -->
+    <li data-key="69" class="key" id="white">
+        <kbd>E</kbd>
+    </li> <!--E -->
+    <li data-key="82" class="key" id="white">
+        <kbd>R</kbd>
+    </li> <!--F -->
+    <li data-key="53" class="key" id="black">
+        <kbd>5</kbd>
+    </li> <!--F# -->
+    <li data-key="84" class="key" id="white">
+        <kbd>T</kbd>
+    </li> <!--G -->
+    <li data-key="54" class="key" id="black">
+        <kbd>6</kbd>
+    </li> <!--G# -->
+    <li data-key="89" class="key" id="white">
+        <kbd>Y</kbd>
+    </li> <!--A -->
+    <li data-key="55" class="key" id="black">
+        <kbd>7</kbd>
+    </li> <!--A# -->
+    <li data-key="85" class="key" id="white">
+        <kbd>U</kbd>
+    </li> <!--B -->
+
+    <li data-key="67" class="key" id="white">
+        <kbd>C</kbd>
+    </li> <!--C -->
+<!-- Second Octave-->
+
+
+    <li data-key="70" class="key" id="black">
+        <kbd>F</kbd>
+    </li> <!--C# -->
+    <li data-key="86" class="key" id="white">
+        <kbd>V</kbd>
+    </li> <!--D -->
+    <li data-key="71" class="key" id="black">
+        <kbd>G</kbd>
+    </li> <!--D# -->
+    <li data-key="66" class="key" id="white">
+        <kbd>B</kbd>
+    </li> <!--E -->
+    <li data-key="78" class="key" id="white">
+        <kbd>N</kbd>
+    </li> <!--F -->
+    <li data-key="74" class="key" id="black">
+        <kbd>J</kbd>
+    </li> <!--F# -->
+    <li data-key="77" class="key" id="white">
+        <kbd>M</kbd>
+    </li> <!--G -->
+    <li data-key="75" class="key" id="black">
+        <kbd>K</kbd>
+    </li> <!--G# -->
+    <li data-key="188" class="key" id="white">
+        <kbd>,</kbd>
+    </li> <!--A -->
+    <li data-key="76" class="key" id="black">
+        <kbd>L</kbd>
+    </li> <!--A# -->
+    <li data-key="190" class="key" id="white">
+        <kbd>.</kbd>
+    </li><!--B -->
+    <li data-key="191" class="key" id="white">
+        <kbd>/</kbd>
+    </li><!--C-->
+</ul>
+
+
+
+  <audio data-key="81" src="sounds/Piano11.mp3"></audio>
+  <audio data-key="50" src="sounds/Piano12.mp3"></audio>
+  <audio data-key="87" src="sounds/Piano13.mp3"></audio>
+  <audio data-key="51" src="sounds/Piano14.mp3"></audio>
+  <audio data-key="69" src="sounds/Piano15.mp3"></audio>
+  <audio data-key="82" src="sounds/Piano16.mp3"></audio>
+  <audio data-key="53" src="sounds/Piano17.mp3"></audio>
+  <audio data-key="84" src="sounds/Piano18.mp3"></audio>
+  <audio data-key="54" src="sounds/Piano19.mp3"></audio>
+  <audio data-key="89" src="sounds/Piano110.mp3"></audio>
+  <audio data-key="55" src="sounds/Piano111.mp3"></audio>
+  <audio data-key="85" src="sounds/Piano112.mp3"></audio>
+  <audio data-key="73" src="sounds/Piano113.mp3"></audio>
+
+  <audio data-key="67" src="sounds/Piano1132.mp3"></audio>
+  <audio data-key="70" src="sounds/Piano114.mp3"></audio>
+  <audio data-key="86" src="sounds/Piano115.mp3"></audio>
+  <audio data-key="71" src="sounds/Piano116.mp3"></audio>
+  <audio data-key="66" src="sounds/Piano117.mp3"></audio>
+  <audio data-key="78" src="sounds/Piano118.mp3"></audio>
+  <audio data-key="74" src="sounds/Piano119.mp3"></audio>
+  <audio data-key="77" src="sounds/Piano120.mp3"></audio>
+  <audio data-key="75" src="sounds/Piano121.mp3"></audio>
+  <audio data-key="188" src="sounds/Piano122.mp3"></audio>
+  <audio data-key="76" src="sounds/Piano123.mp3"></audio>
+  <audio data-key="190" src="sounds/Piano124.mp3"></audio>
+  <audio data-key="191" src="sounds/Piano125.mp3"></audio>
+
+</div>
+
+
+<script>
+
+    function playSound(e) {
+     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+     if(!audio) return;
+     audio.currentTime = 0;
+     audio.play();
+     key.classList.add('playing');
+     w
+    }
+   
+   function removeTransition(e){
+     if (e.propertyName !== 'transform') return;
+     console.log(e.propertyName);
+     this.classList.remove('playing');
+   }
+   
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound); 
+   </script>
+   
+
+</body>
+</html>
